@@ -1,0 +1,20 @@
+--inner Join
+Select Orders.ProductName, Orders.Quentity, Orders.Price, Employees.EmployeeName 
+from Orders inner join Employees on Orders.OrderId = Employees.EmployeeId
+
+--order by
+Select Orders.ProductName, Orders.Quentity, Orders.Price, Employees.EmployeeName 
+from Orders inner join Employees on Orders.OrderId = Employees.EmployeeId
+order by Orders.Quentity desc
+
+--left join
+Select Orders.ProductName, Orders.Quentity, Orders.Price, Employees.EmployeeId 
+from Orders left join Employees on Orders.OrderId = Employees.EmployeeId
+order by Orders.Quentity
+
+--Right join
+Select Employees.EmployeeId, Employees.EmployeeName, Employees.Department, Orders.OrderId 
+from Employees right join Orders on Orders.OrderId = Employees.EmployeeId
+order by Orders.Quentity
+
+

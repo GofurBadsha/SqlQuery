@@ -1,0 +1,63 @@
+--Store Procedure without paramiter
+create procedure AllTableRecord
+as 
+select * from Orders
+select * from Customers
+select * from Players
+select * from employees
+go;
+
+exec AllTableRecord
+
+--Store Procedure With Paramiter
+Create Procedure GetEmployeeById @Id int
+as
+Select * from Employees
+where EmployeeID = @Id
+
+exec GetEmployeeById @Id=1
+
+
+--Create Table From Store Procedure With Paramiter
+Create Procedure InsertValueEmployeeTable @Id int, @EmployeeName varchar(250), @Salary int, @Department varchar(250), @customerId int 
+as
+insert into Employees Values(@Id, @EmployeeName, @Salary, @Department, @customerId) 
+
+
+exec InsertValueEmployeeTable @Id=101, @EmployeeName=Shihab, @Salary=10000, @Department=Markating, @customerId=2
+select * from Employees
+
+
+------------------------------------------------------------------------------------------
+--Save, Update Data from web form
+Create proc EmployeeCreateOrUpdate
+@EmployeeId int,
+@EmployeeName varchar(50),
+@Salary varchar (50),
+@Department varchar (50)
+As 
+Begin 
+	If(@EmployeeId = 0)
+	Begin
+		Insert into Employees(EmployeeName, Salary, Department)
+		values(@EmployeeName, @Salary, @Department)
+	End
+	else
+		Begin
+			Update Employees
+			Set 
+				EmployeeName = @EmployeeName,
+				Salary = @Salary,
+				Department = @Department
+			where EmployeeId = @EmployeeId
+		End
+End
+----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+

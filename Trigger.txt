@@ -1,0 +1,10 @@
+CREATE TRIGGER trInsertEmployee   
+ON Employees 
+FOR INSERT  
+AS  
+BEGIN  
+  Declare @Id int  
+  SELECT @Id = EmployeeId from inserted  
+  INSERT INTO Employee_Audit_Test  
+  VALUES ('New employee with Id = ' + CAST(@Id AS VARCHAR(10)) + ' is added at ' + CAST(Getdate() AS VARCHAR(22)))  
+END  

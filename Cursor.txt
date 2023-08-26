@@ -1,0 +1,17 @@
+Declare @EmployeeName varchar(50), @Salary int
+
+Declare DB_Cursor Cursor
+for Select EmployeeName,Salary from Employees
+
+Open DB_Cursor 
+
+Fetch Next from DB_Cursor Into @EmployeeName, @Salary
+
+While @@FETCH_STATUS = 0
+Begin
+	Print @EmployeeName+' '+cast(@Salary as varchar)
+	Fetch Next from DB_Cursor Into @EmployeeName, @Salary
+End
+
+close DB_Cursor
+Deallocate DB_Cursor

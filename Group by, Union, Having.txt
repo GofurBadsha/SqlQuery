@@ -1,0 +1,27 @@
+select * from Customers;
+select * from Orders
+select * from Employees
+select * from Players
+
+
+--group by
+select count(OrderId), Quentity
+from Orders 
+group by Quentity
+
+--between
+select * 
+from Employees 
+where Salary Between 10000 and 20000
+
+
+--Union
+select EmployeeId from Employees
+union 
+select OrderId from Orders
+
+--Having 
+select count(OrderId), Quentity
+from Orders 
+group by Quentity
+having count(Quentity) > 1

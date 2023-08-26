@@ -1,0 +1,100 @@
+Create database CustomerDB
+use CustomerDB
+
+select * from Customers;
+select * from Orders
+select * from Employees
+select * from Players
+
+Create Table Orders (
+OrderId int not null primary key,
+ProductName varchar (250),
+Price varchar (250),
+Quentity varchar (250),
+);
+
+Create Table Employees (
+EmployeeId int not null primary key,
+EmployeeName varchar (250),
+Salary varchar (250),
+Department varchar (250),
+);
+
+Create Table Players (
+Id int not null primary key,
+PlayerName varchar (250) not null,
+PlayerRank varchar (50) not null,
+PlayerAge varchar (50) not null)
+
+
+insert into Customers(CustomerId,CustomerName, CustomerEmail, CustomerPhoneNO, CustomerAddress)
+values ('1','Akash','akash@gmail.com','012345678910','Dhaka'),
+('2','Sufian', 'Sufian@gmail.com','012345678911','Mirpur'),
+('3','Shofik', 'shofik@gmail.com','012345678912','kollanpur'),
+('4','Mohshin', 'mohsin@gmail.com','012345678913','dhanmondi'),
+('5','soykot', 'soykot@gmail.com','012345678914','comilla')
+
+insert into Orders(OrderId,ProductName, Price, Quentity)
+values ('1','Laptop','15000','3'),
+('2','Desktop','20000','2'),
+('3','Power Cable','500','3'),
+('4','Monitor','5000','1')
+
+insert into Employees(EmployeeId,EmployeeName, Salary, Department)
+values ('1','Akash','15000','Programmer'),
+('2','Sufian','20000','Developer'),
+('3','Mohshin','500','Programmer'),
+('4','soykot','5000','Developer')
+
+insert into Players(Id,PlayerName, PlayerRank, PlayerAge)
+values ('1','Sakib','A','38'),
+('2','Tamim','A','36'),
+('3','Afif','B','28'),
+('4','Razzak','C','32')
+
+--inner Join
+Select Orders.ProductName, Orders.Quentity, Orders.Price, Employees.EmployeeName 
+from Orders inner join Employees on Orders.OrderId = Employees.EmployeeId
+
+--order by
+Select Orders.ProductName, Orders.Quentity, Orders.Price, Employees.EmployeeName 
+from Orders inner join Employees on Orders.OrderId = Employees.EmployeeId
+order by Orders.Quentity desc
+
+--left join
+Select Orders.ProductName, Orders.Quentity, Orders.Price, Employees.EmployeeId 
+from Orders left join Employees on Orders.OrderId = Employees.EmployeeId
+order by Orders.Quentity
+
+--Right join
+Select Employees.EmployeeId, Employees.EmployeeName, Employees.Department, Orders.OrderId 
+from Employees right join Orders on Orders.OrderId = Employees.EmployeeId
+order by Orders.Quentity
+
+--group by
+select count(OrderId), Quentity
+from Orders 
+group by Quentity
+
+--between
+select * 
+from Employees 
+where Salary Between 10000 and 20000
+
+--substruc
+
+--Union
+select EmployeeId from Employees
+union 
+select OrderId from Orders
+
+--Having 
+select count(OrderId), Quentity
+from Orders 
+group by Quentity
+having count(Quentity) > 1
+
+--Exist
+
+
+
