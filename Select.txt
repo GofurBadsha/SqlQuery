@@ -1,0 +1,48 @@
+Create database CustomerDB
+use CustomerDB
+
+select * from Customers;
+select * from Orders
+select * from Employees
+select * from Players
+
+--inner Join
+Select Orders.ProductName, Orders.Quentity, Orders.Price, Employees.EmployeeName 
+from Orders inner join Employees on Orders.OrderId = Employees.EmployeeId
+
+--order by
+Select Orders.ProductName, Orders.Quentity, Orders.Price, Employees.EmployeeName 
+from Orders inner join Employees on Orders.OrderId = Employees.EmployeeId
+order by Orders.Quentity desc
+
+--left join
+Select Orders.ProductName, Orders.Quentity, Orders.Price, Employees.EmployeeId 
+from Orders left join Employees on Orders.OrderId = Employees.EmployeeId
+order by Orders.Quentity
+
+--Right join
+Select Employees.EmployeeId, Employees.EmployeeName, Employees.Department, Orders.OrderId 
+from Employees right join Orders on Orders.OrderId = Employees.EmployeeId
+order by Orders.Quentity
+
+
+--between
+select * 
+from Employees 
+where Salary Between 10000 and 20000
+
+
+--Union
+select EmployeeId from Employees
+union 
+select OrderId from Orders
+
+--Having 
+select count(OrderId), Quentity
+from Orders 
+group by Quentity
+having count(Quentity) > 1
+
+
+
+
